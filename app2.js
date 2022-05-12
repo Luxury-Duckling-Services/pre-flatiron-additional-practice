@@ -144,10 +144,12 @@ function checkMatch() {
 
 function flipCard() {
     let cardId = this.getAttribute('data-id')
-    cardsChosen.push(cardArray[cardId].name)
-    cardsChosenIds.push(cardId)
-
     this.setAttribute('src', cardArray[cardId].img)
+    
+    if (cardId !== cardsChosenIds[0]) {
+        cardsChosenIds.push(cardId)
+        cardsChosen.push(cardArray[cardId].name)
+    }
     if (cardsChosen.length === 2) {
         setTimeout(checkMatch , 500 )
     }
